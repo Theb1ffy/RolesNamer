@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IlB1ffoneBot</title>
     <style>
         body {
-            background: radial-gradient(circle at top, #00bfff , #00ffee);
+            background: radial-gradient(circle at top, #00bfff, #00ffee);
             color: white;
             font-family: "Helvetica-Bold", Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             height: 100vh;
         }
         #banner {
@@ -17,12 +23,13 @@
             text-align: left;
             border-radius: 0 0 20px 20px;
             font-size: 24px;
-            margin-left: 0px; /* Sposto leggermente a destra */
+            margin-left: 0;
         }
         #network {
             width: 100%;
             height: 300px;
             position: relative;
+            margin-top: 20px;
         }
         .circle {
             width: 10px;
@@ -40,16 +47,9 @@
             margin-top: 20px;
             font-size: 24px;
         }
-        #top-text {
-            text-align: right;
+        #top-text, #bottom-text {
+            text-align: center;
             margin-top: 10px;
-            margin-right: 20px;
-            font-size: 36px;
-        }
-        #bottom-text {
-            text-align: right;
-            margin-top: -10px;
-            margin-right: 20px;
             font-size: 24px;
         }
         #button {
@@ -57,17 +57,17 @@
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
-            display: inline-block;
             margin-top: 20px;
-            margin-right: 20px;
-            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        #button:hover {
+            background-color: #0056b3;
         }
         #logo {
-            position: absolute;
-            top: -23px;
-            left: 105px;
             max-width: 100px;
             max-height: 100px;
+            margin-top: -23px;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Helvetica-Bold&display=swap" rel="stylesheet">
@@ -76,9 +76,9 @@
     <img id="logo" src="Untitled16_20230804002042_(1)-transformed.png" alt="ScamCord">
     <div id="banner">IlB1ffoneBot</div>
     <div id="network"></div>
-    <div id="top-text">Click "Add to discord"</div>
-    <div id="bottom-text">To add IlB1ffoneBot to your discord server</div>
-    <a id="button" href="https://discord.com/api/oauth2/authorize?client_id=1137274349083172924&permissions=8&scope=bot">Add to Discord</a> <!-- Cambia "https://example.com" con il tuo link desiderato -->
+    <div id="top-text">Click "Add to Discord"</div>
+    <div id="bottom-text">To add IlB1ffoneBot to your Discord server</div>
+    <a id="button" href="https://discord.com/api/oauth2/authorize?client_id=1137274349083172924&permissions=8&scope=bot">Add to Discord</a>
 
     <script>
         // Il tuo JavaScript qui, se necessario
