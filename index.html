@@ -1,4 +1,6 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RolesNamer</title>
@@ -64,13 +66,10 @@
     </style>
 </head>
 <body>
-    <div id="title">RolesNamer CMD</div>
+    <div id="title">RolesNamer</div>
     <div id="cmd-container">
-        <div id="cmd-output"><span>&gt; Welcome to RolesNamer
-</span><span>&gt; Set roles Names !start
-</span><span>&gt; Click add to discord to add RolesNamer to your Discord Server
-</span></div>
-        <button id="download-button" onclick="downloadRolesNamer()" style="display: block;">Add to Discord</button>
+        <div id="cmd-output"></div>
+        <button id="download-button" onclick="downloadRolesNamer()">Add to Discord</button>
     </div>
 
     <script>
@@ -124,6 +123,5 @@
             cmdOutput.innerHTML = cmdOutput.innerHTML.replace(selectedText, `<span style="background-color: #00ff00; color: #000;">${selectedText}</span>`);
         });
     </script>
-
-
-</body></html>
+</body>
+</html>
