@@ -1,87 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IlB1ffoneBot</title>
+    <title>RolesNamer</title>
     <style>
+        @font-face {
+            font-family: 'GoogleSans';
+            src: url('GoogleSans.ttf'); /* Sostituisci con il percorso reale o l'URL del tuo tipo di carattere */
+        }
+
         body {
-            background: radial-gradient(circle at top, #00bfff, #00ffee);
-            color: white;
-            font-family: "Helvetica-Bold", Arial, sans-serif;
+            background-color: #2c2c2c;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
         }
-        #banner {
-            background-color: blue;
-            padding: 15px;
-            text-align: left;
-            border-radius: 0 0 20px 20px;
-            font-size: 24px;
-            margin-left: 0;
+        #title {
+            font-family: 'GoogleSans', sans-serif;
+            font-size: 36px;
+            margin-bottom: 20px;
         }
-        #network {
-            width: 100%;
-            height: 300px;
-            position: relative;
-            margin-top: 20px;
+        #cmd-container {
+            background-color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            overflow: hidden;
+            white-space: pre-line;
         }
-        .circle {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: white;
-            position: absolute;
+        #cmd-output {
+            white-space: pre-line;
+            overflow: hidden;
+            border-right: 2px solid #00ff00;
+            margin: 0;
+            padding: 0;
+            animation: typing 2s steps(30) forwards;
         }
-        .line {
-            position: absolute;
-            border-bottom: 1px solid white;
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
         }
-        #text {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 24px;
-        }
-        #top-text, #bottom-text {
-            text-align: center;
+        #download-button {
+            display: none;
             margin-top: 10px;
-            font-size: 24px;
-        }
-        #button {
-            background-color: blue;
+            padding: 10px;
+            background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            border: none;
             border-radius: 5px;
-            margin-top: 20px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        #button:hover {
-            background-color: #0056b3;
-        }
-        #logo {
-            max-width: 100px;
-            max-height: 100px;
-            margin-top: -23px;
+            cursor: pointer;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Helvetica-Bold&display=swap" rel="stylesheet">
 </head>
 <body>
-    <img id="logo" src="Untitled16_20230804002042_(1)-transformed.png" alt="ScamCord">
-    <div id="banner">IlB1ffoneBot</div>
-    <div id="network"></div>
-    <div id="top-text">Click "Add to Discord"</div>
-    <div id="bottom-text">To add IlB1ffoneBot to your Discord server</div>
-    <a id="button" href="https://discord.com/api/oauth2/authorize?client_id=1137274349083172924&permissions=8&scope=bot">Add to Discord</a>
+    <div id="title">RolesNamer CMD</div>
+    <div id="cmd-container">
+        <div id="cmd-output"><span>&gt; Welcome to RolesNamer
+</span><span>&gt; Set roles Names !start
+</span><span>&gt; Click add to discord to add RolesNamer to your Discord Server
+</span></div>
+        <button id="download-button" onclick="downloadRolesNamer()" style="display: block;">Add to Discord</button>
+    </div>
 
     <script>
-        // Il tuo JavaScript qui, se necessario
+        const commands = [
+            "Welcome to RolesNamer",
+            "Set roles Names !start",
+            "Click add to discord to add RolesNamer to your Discord Server"
+        ];
+
+        let commandIndex = 0;
+
+        function simulateCommand() {
+            if (commandIndex < commands.length) {
+                const command = commands[commandIndex];
+                processCommand(command);
+                commandIndex++;
+
+                if (commandIndex === commands.length) {
+                    // Display the download button after the last command
+                    document.getElementById('download-button').style.display = 'block';
+                }
+            }
+        }
+
+        function processCommand(command) {
+            var outputContainer = document.getElementById('cmd-output');
+            var span = document.createElement('span');
+            span.textContent = "> " + command + "\n";
+            outputContainer.appendChild(span);
+            outputContainer.scrollTop = outputContainer.scrollHeight;
+        }
+
+        function downloadRolesNamer() {
+            window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1180211899195985940&permissions=8&scope=bot";
+        }
+
+        // Simulate commands on page load
+        window.onload = function() {
+            setInterval(simulateCommand, 2000); // Simulate a command every 2 seconds
+        };
+
+        // Modifica dinamicamente il colore del testo selezionato solo per la parola selezionata
+        document.getElementById('cmd-output').addEventListener('mouseup', function() {
+            const selectedText = window.getSelection().toString();
+            const cmdOutput = document.getElementById('cmd-output');
+
+            // Resetta lo stile precedente
+            cmdOutput.innerHTML = cmdOutput.innerText;
+
+            // Applica il colore di selezione solo alla parola selezionata
+            cmdOutput.innerHTML = cmdOutput.innerHTML.replace(selectedText, `<span style="background-color: #00ff00; color: #000;">${selectedText}</span>`);
+        });
     </script>
-</body>
-</html>
+
+
+</body></html>
